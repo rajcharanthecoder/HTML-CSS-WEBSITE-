@@ -1,0 +1,305 @@
+/*
+position and layout
+
+static
+relative
+absolute
+fixed
+sticky
+*/
+/* 
+static is the default position of an element. It is not affected by the top, bottom, left, and right properties.
+
+relative is positioned relative to its normal position. Setting the top, right, bottom, and left properties of a relatively positioned element will cause it to be adjusted away from its normal position. Other content will not be adjusted to fit into any gap left by the element.
+
+fixed is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. Setting the top, right, bottom, and left properties of a fixed element will cause it to be adjusted away from its normal position. However, unlike relative elements, fixed elements do not leave a gap in the page where they would normally have been located.
+
+absolute is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed). However; if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.
+
+sticky is positioned based on the user's scroll position. A sticky element toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). 
+
+z-index:0 by default*/
+body,
+ul,
+li,
+h2,
+a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: arial;
+}
+
+header {
+    background-color: #f63232;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+header h1 {
+    color: white;
+    border: 8px solid white;
+    padding: 6px 12px;
+    /*top and bottom, left and right*/
+    display: inline-block;
+    /*inline elements cannot have width and height and to make it inline as well as block element*/
+    border-radius: 36px;
+
+}
+
+.banner {
+    position: relative;
+    /*relative just moves but leaves space as it is causing it to have void spaces*/
+}
+
+.banner img {
+    max-width: 100%;
+    /*sets the image to the full width of the container*/
+
+
+}
+
+.banner .welcome {
+    background-color: #feb614;
+    padding: 30px;
+    color: white;
+    position: absolute;
+    /*no space is left for the element after movement*/
+    left: 0%;
+    top: 50%;
+}
+
+
+
+.banner h2 {
+    font-size: 74px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.banner h2 span {
+    font-size: 1.3em
+}
+
+nav {
+    background-color: #f4f4f4;
+    padding: 20px;
+    position: sticky;
+    top: 148px;
+}
+
+nav ul {
+    white-space: nowrap;
+    /*white space is used to remove the space between the elements and not to allow to wrap to next line*/
+    max-width: 1200px;
+    margin: 0 auto;
+    /*to center the element top bottom and left right*/
+}
+
+nav li {
+    width: 25%;
+    display: inline-block;
+    font-size: 24px;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #4b4b4b;
+}
+
+nav li a.join {
+    color: #f63232;
+}
+
+main {
+    max-width: 100%;
+    width: 1200px;
+    margin: 80px auto;
+    padding: 0px 40px;
+    box-sizing: border-box;
+    /*to include the padding and border in the width inclusive of padding*/
+
+}
+
+article h2 {
+    color: #f63232;
+    font-size: 48px;
+
+}
+
+article p {
+    line-height: 2em;
+    color: #4b4b4b;
+}
+
+.images {
+    text-align: center;
+    margin: 80px 0;
+    white-space: nowrap;
+
+}
+
+.images li {
+    display: inline-block;
+    width: 40%;
+    margin: 20px 5%;
+}
+
+.images li img {
+    max-width: 100%;
+}
+
+.join {
+    background: #f4f4f4;
+    text-align: center;
+    padding: 60p 20px;
+    color: #4b4b4b;
+}
+
+.join h2 {
+    font-size: 36px;
+}
+
+form input {
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: 28px;
+    border: 4px solid white;
+}
+
+footer {
+    background: #f63232;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/*psuedo classes are used to style the elements based on the state of the element
+:hover
+*/
+
+/*psuedo classes*/
+
+nav li a:hover {
+    text-decoration: underline;
+}
+
+.images li:hover {
+    position: relative;
+    top: -4px;
+}
+
+form input:focus {
+    border: 4px dashed #4b4b4b;
+    /*to remove box blue use outline:none*/
+    outline: none;
+}
+
+form input:valid {
+    border: 4px solid green;
+}
+
+article p::first-line {
+    /*first line of para*/
+    font-weight: bold;
+    font-weight: 1.3em;
+}
+
+section.join p::first-letter {
+    font-size: 2em;
+    color: #feb614;
+}
+
+p::selection {
+    /*selection of text*/
+    background: #f63232;
+    color: white;
+}
+
+p::after {
+    content: "........";
+    /*to add content after the element*/
+}
+
+/*media queries*/
+
+/* Tells the browser how to style an element at particular viewport dimensions */
+
+/*viewport meta tag is used to set the width of the viewport to the width of the device and what width the viewport must be set to*/
+
+/*Syntax for media queries*/
+
+/* @media screen and (max-width: 600px) { */
+/* Styles */
+/* } */
+
+
+@media screen and (max-width: 1400px) {
+    .banner .welcome h2 {
+        font-size: 60px;
+    }
+
+    nav li {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .banner .welcome h2 {
+        font-size: 48px;
+    }
+
+    nav li {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .banner .welcome {
+        position: relative;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .banner .welcome br {
+        display: none;
+    }
+
+    .banner .welcome h2 {
+        font-size: 25px;
+    }
+
+    .banner .welcome span {
+        font-size: 1em;
+    }
+
+    .images li {
+        width: 100%;
+        margin: 20px auto;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    nav li {
+        font-size: 20px;
+        position: relative;
+        display: block;
+        width: 100%;
+        margin: 12px 0;
+    }
+
+    header {
+        position: relative;
+    }
+
+    nav {
+        top: 0;
+    }
+}
